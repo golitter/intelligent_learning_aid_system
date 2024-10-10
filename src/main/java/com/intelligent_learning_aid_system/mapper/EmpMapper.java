@@ -2,8 +2,10 @@ package com.intelligent_learning_aid_system.mapper;
 
 import com.intelligent_learning_aid_system.pojo.Emp;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -25,6 +27,6 @@ public interface EmpMapper {
 //    @Select("select * from emp limit #{page}, #{size}")
 //    public List<Emp> page(Integer page, Integer size);
 //获取当前页的结果列表
-    @Select("select * from emp")
-    public List<Emp> page();
+//    @Select("select * from emp")
+    public List<Emp> page(@Param("name") String name,@Param("gender") Short gender,@Param("begin") LocalDate begin,@Param("end") LocalDate end);
 }

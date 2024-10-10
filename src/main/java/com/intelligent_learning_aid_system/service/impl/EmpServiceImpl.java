@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.intelligent_learning_aid_system.mapper.EmpMapper;
 import com.intelligent_learning_aid_system.pojo.Emp;
 import com.intelligent_learning_aid_system.pojo.PageBean;
+import com.intelligent_learning_aid_system.pojo.Result;
 import com.intelligent_learning_aid_system.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,6 @@ public class EmpServiceImpl implements EmpService {
     private EmpMapper empMapper;
 
     /**
-     *
      * @param page
      * @param pageSize
      * @return
@@ -38,11 +38,11 @@ public class EmpServiceImpl implements EmpService {
 //        return pageBean;
 //    }
     // pageHelper 插件
-    public PageBean page(Integer page, Integer pageSize) {
+    public PageBean page(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end) {
         // 设置分页参数
         PageHelper.startPage(page, pageSize);
         // 执行查询
-        List<Emp> rows = empMapper.page();
+        List<Emp> rows = empMapper.page(name, gender, begin, end);
         Page<Emp> p = (Page<Emp>) rows;
         // 封装PageBean对象
         PageBean pageBean = new PageBean();
