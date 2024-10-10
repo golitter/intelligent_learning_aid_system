@@ -1,10 +1,7 @@
 package com.intelligent_learning_aid_system.mapper;
 
 import com.intelligent_learning_aid_system.pojo.Dept;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -41,5 +38,13 @@ public interface DeptMapper {
      * 按id查询部门
      * @return
      */
-    void listById();
+    @Select("select * from dept where id = #{id}")
+    Dept getById(Integer id);
+
+    /**
+     * 修改部门
+     * @param dept
+     */
+    @Update("update dept set name = #{name}, update_time = #{updateTime} where id = #{id}")
+    void update(Dept dept);
 }

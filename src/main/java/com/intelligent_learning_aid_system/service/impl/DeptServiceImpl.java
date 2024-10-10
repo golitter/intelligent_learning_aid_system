@@ -46,10 +46,18 @@ public class DeptServiceImpl implements DeptService {
 
     /**
      * 按id查询部门
-     */
      * @return
              */
-    public List<Dept> listById() {
-         deptMapper.listById();
+    public Dept getById(Integer id) {
+        Dept dept = deptMapper.getById(id);
+         return dept;
+    }
+    /**
+     * 修改部门
+     * @param dept
+     */
+    public void update(Dept dept) {
+        dept.setUpdateTime(LocalDateTime.now());
+        deptMapper.update(dept);
     }
 }

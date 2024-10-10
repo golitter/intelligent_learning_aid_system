@@ -28,8 +28,13 @@ public interface DeptService {
 
     /**
      * 按id查询部门
-     */
      * @return
      */
-    List<Dept> listById();
+    Dept getById(Integer id);
+
+    /**
+     * 修改部门
+     * @param dept
+     */
+    void update(Dept dept);
 }

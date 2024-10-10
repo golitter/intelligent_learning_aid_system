@@ -60,8 +60,18 @@ public class DeptController {
     public Result get(@PathVariable("id") Integer id) {
         log.info("根据id - {}查询部门数据", id);
         // 调用service查询部门数据
-        List<Dept> deptList = deptService.listById();
-        return Result.success(deptList);
+        Dept dept = deptService.getById(id);
+        return Result.success(dept);
     }
 
+    /**
+     * 修改部门
+     */
+    @PutMapping("")
+    public Result update(@RequestBody Dept dept) {
+        log.info("修改部门数据 - {}", dept);
+        // 调用service修改部门
+        deptService.update(dept);
+        return Result.success();
+    }
 }
