@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -34,4 +35,21 @@ public class DeptServiceImpl implements DeptService {
         return Result.success();
     }
 
+    /**
+     * 新增部门
+     */
+    public void add(Dept dept) {
+        dept.setCreateTime(LocalDateTime.now());
+        dept.setUpdateTime(LocalDateTime.now());
+        deptMapper.add(dept);
+    }
+
+    /**
+     * 按id查询部门
+     */
+     * @return
+             */
+    public List<Dept> listById() {
+         deptMapper.listById();
+    }
 }

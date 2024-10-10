@@ -20,4 +20,16 @@ public interface DeptService {
      * 删除部门
      */
     Result deleteById(Integer id);
+
+    /**
+     * 新增部门
+     */
+    void add(Dept dept);
+
+    /**
+     * 按id查询部门
+     */
+     * @return
+     */
+    List<Dept> listById();
 }

@@ -17,12 +17,13 @@ import java.util.List;
  */
 @Slf4j
 @RestController
+@RequestMapping("/depts")
 public class DeptController {
     @Autowired
     private DeptService deptService;
 
     //    @RequestMapping(value = "/depts", method = RequestMethod.GET) // 指定请求参数为 GET
-    @GetMapping("/depts") // 等同于上面的写法
+    @GetMapping("") // 等同于上面的写法
     public Result list() {
 //        System.out.println("查询全部部门数据");
         log.info("查询全部部门数据");
@@ -35,10 +36,32 @@ public class DeptController {
     /**
      * 删除部门
      */
-    @DeleteMapping("/depts/{id}")
+    @DeleteMapping("/{id}")
     public Result delete(@PathVariable("id") Integer id) {
         log.info("根据id - {}删除部门数据", id);
         // 调用service删除部门
         return deptService.deleteById(id);
     }
+
+    /**
+     * 新增部门
+     */
+    @PostMapping("")
+    public Result add(@RequestBody Dept dept) {
+        log.info("新增部门数据 - {}", dept);
+        deptService.add(dept);
+        return Result.success();
+    }
+
+    /**
+     * 按id查询部门
+     */
+    @GetMapping("/{id}")
+    public Result get(@PathVariable("id") Integer id) {
+        log.info("根据id - {}查询部门数据", id);
+        // 调用service查询部门数据
+        List<Dept> deptList = deptService.listById();
+        return Result.success(deptList);
+    }
+
 }
