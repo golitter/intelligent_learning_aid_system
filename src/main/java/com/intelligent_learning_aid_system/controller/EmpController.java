@@ -39,4 +39,14 @@ public class EmpController {
         PageBean pageBean = empService.page(page, pageSize, name, gender, begin, end);
         return Result.success(pageBean);
     }
+
+    /**
+     *  批量删除员工
+     */
+    @DeleteMapping("/{ids}")
+    public Result delete(@PathVariable List<Integer> ids) {
+        log.info("删除员工 - id:{}", ids);
+        empService.delete(ids);
+        return Result.success();
+    }
 }

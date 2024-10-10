@@ -29,4 +29,6 @@ public interface EmpMapper {
 //获取当前页的结果列表
 //    @Select("select * from emp")
     public List<Emp> page(@Param("name") String name,@Param("gender") Short gender,@Param("begin") LocalDate begin,@Param("end") LocalDate end);
+
+    void delete(@Param("ids") List<Integer> ids);
 }

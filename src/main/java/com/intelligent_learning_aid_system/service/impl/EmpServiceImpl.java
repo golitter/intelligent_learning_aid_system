@@ -50,4 +50,10 @@ public class EmpServiceImpl implements EmpService {
         pageBean.setRows(p.getResult());
         return pageBean;
     }
+    /**
+     * 批量删除员工
+     */
+    public void delete(List<Integer> ids) {
+        empMapper.delete(ids);
+    }
 }
