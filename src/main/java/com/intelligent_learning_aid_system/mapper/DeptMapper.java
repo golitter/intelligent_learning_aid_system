@@ -15,4 +15,10 @@ import java.util.List;
 @Mapper
 public interface DeptMapper {
 
+    /**
+     * 查询全部部门
+     * @return
+     */
+    @Select("select * from dept")
+    List<Dept> list();
 }
