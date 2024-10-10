@@ -3,6 +3,7 @@ package com.intelligent_learning_aid_system.service.impl;
 
 import com.intelligent_learning_aid_system.mapper.DeptMapper;
 import com.intelligent_learning_aid_system.pojo.Dept;
+import com.intelligent_learning_aid_system.pojo.Result;
 import com.intelligent_learning_aid_system.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Select;
@@ -24,4 +25,13 @@ public class DeptServiceImpl implements DeptService {
     public List<Dept> list() {
         return deptMapper.list();
     }
+
+    /**
+     * 删除部门
+     */
+    public Result deleteById(Integer id) {
+        deptMapper.deleteById(id);
+        return Result.success();
+    }
+
 }

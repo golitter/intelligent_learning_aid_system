@@ -32,6 +32,13 @@ public class DeptController {
         return Result.success(deptList);
     }
 
-
-
+    /**
+     * 删除部门
+     */
+    @DeleteMapping("/depts/{id}")
+    public Result delete(@PathVariable("id") Integer id) {
+        log.info("根据id - {}删除部门数据", id);
+        // 调用service删除部门
+        return deptService.deleteById(id);
+    }
 }
