@@ -17,6 +17,16 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-public class EmpController {
+@RequestMapping("/emps")
 
+public class EmpController {
+    @Autowired
+    private EmpService empService;
+
+    @GetMapping("")
+    public Result page(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer pageSize) {
+        log.info("分页查询员工数据 - 第{}页，每页{}条", page, pageSize);
+        PageBean pageBean = empService.page(page, pageSize);
+        return Result.success(pageBean);
+    }
 }

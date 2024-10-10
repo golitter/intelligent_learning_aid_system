@@ -11,4 +11,11 @@ import java.util.List;
  */
 public interface EmpService {
 
+    /**
+     *
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    PageBean page(Integer page, Integer pageSize);
 }

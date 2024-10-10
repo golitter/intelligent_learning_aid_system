@@ -4,8 +4,8 @@ import com.intelligent_learning_aid_system.pojo.Emp;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import java.time.LocalDate;
 import java.util.List;
+
 
 /**
  * 员工管理
@@ -13,4 +13,18 @@ import java.util.List;
 @Mapper
 public interface EmpMapper {
 
+//    /**
+//     * 查询总记录数
+//     */
+//    @Select("select count(*) from emp")
+//    public Long count();
+//
+//    /**
+//     * 分页查询，获取列表数据
+//     */
+//    @Select("select * from emp limit #{page}, #{size}")
+//    public List<Emp> page(Integer page, Integer size);
+//获取当前页的结果列表
+    @Select("select * from emp")
+    public List<Emp> page();
 }
