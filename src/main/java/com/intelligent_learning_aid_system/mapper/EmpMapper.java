@@ -1,6 +1,7 @@
 package com.intelligent_learning_aid_system.mapper;
 
 import com.intelligent_learning_aid_system.pojo.Emp;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -31,4 +32,11 @@ public interface EmpMapper {
     public List<Emp> page(@Param("name") String name,@Param("gender") Short gender,@Param("begin") LocalDate begin,@Param("end") LocalDate end);
 
     void delete(@Param("ids") List<Integer> ids);
+
+    /**
+     * 新增员工
+     */
+    @Insert("insert emp(username, name, gender,image, job, entrydate, dept_id, create_time, update_time) " +
+            "values(#{username}, #{name}, #{gender}, #{image}, #{job}, #{entrydate}, #{deptId}, #{createTime}, #{updateTime})")
+    void save(Emp emp);
 }

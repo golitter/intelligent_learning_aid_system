@@ -1,6 +1,7 @@
 package com.intelligent_learning_aid_system.controller;
 
 
+import com.intelligent_learning_aid_system.pojo.Emp;
 import com.intelligent_learning_aid_system.pojo.PageBean;
 import com.intelligent_learning_aid_system.pojo.Result;
 import com.intelligent_learning_aid_system.service.EmpService;
@@ -48,5 +49,16 @@ public class EmpController {
         log.info("删除员工 - id:{}", ids);
         empService.delete(ids);
         return Result.success();
+    }
+
+    /**
+     * 新增员工
+     */
+    @PostMapping("")
+    public Result save(@RequestBody Emp emp) {
+        log.info("新增员工 - {}", emp);
+        empService.save(emp);
+        return Result.success();
+
     }
 }

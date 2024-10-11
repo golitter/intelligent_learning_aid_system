@@ -1,5 +1,6 @@
 package com.intelligent_learning_aid_system.service;
 
+import com.intelligent_learning_aid_system.pojo.Emp;
 import com.intelligent_learning_aid_system.pojo.PageBean;
 import com.intelligent_learning_aid_system.pojo.Result;
 
@@ -23,5 +24,10 @@ public interface EmpService {
      * 批量删除员工
      */
     void delete(List<Integer> ids);
+
+    /**
+     * 新增员工
+     */
+    void save(Emp emp);
 }
 
