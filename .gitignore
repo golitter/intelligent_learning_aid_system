@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## 密钥处理
+/src/main/resources/application*
+/src/test/java/com/intelligent_learning_aid_system/Demo.java

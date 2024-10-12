@@ -10,6 +10,8 @@ import com.intelligent_learning_aid_system.pojo.Result;
 import com.intelligent_learning_aid_system.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -65,5 +67,26 @@ public class EmpServiceImpl implements EmpService {
         emp.setCreateTime(LocalDateTime.now());
         emp.setUpdateTime(LocalDateTime.now());
         empMapper.save(emp);
+    }
+    /**
+     * 按照员工id查询员工信息
+     * @param id
+     * @return
+     */
+    public Emp getById(Integer id) {
+        return empMapper.getById(id);
+    }
+
+    /**
+     * 修改员工信息
+     * @param emp
+     */
+    public void update(Emp emp) {
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.update(emp);
+    }
+
+    public Emp login(Emp emp) {
+        return empMapper.getByUsernameAndPassword(emp);
     }
 }
