@@ -67,6 +67,17 @@ public class DeptServiceImpl implements DeptService {
 
     //根据部门id，删除部门信息及部门下的所有员工
     @Transactional(rollbackFor=Exception.class)
+    // 默认1为异常回滚
+    // propagation = Propagation.REQUIRED 默认
+    // 事务传播行为
+    // REQUIRED：如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中
+    // REQUIRES_NEW：如果当前没有事务，就新建一个事务，如果已经存在一个事务中，挂起当前事务，创建一个新的事务
+    // SUPPORTS：支持当前事务，如果当前没有事务，就以非事务方式执行
+    // MANDATORY：使用当前的事务，如果当前没有事务，就抛出异常
+    // NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起
+    // NEVER：以非事务方式执行，如果当前存在事务，则抛出异常
+    // NESTED：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作
+
     public void delete(Integer id){
         //根据部门id删除部门信息
         deptMapper.deleteById(id);
