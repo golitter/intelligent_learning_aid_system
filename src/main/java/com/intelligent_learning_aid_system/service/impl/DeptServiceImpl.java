@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -65,6 +66,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     //根据部门id，删除部门信息及部门下的所有员工
+    @Transactional(rollbackFor=Exception.class)
     public void delete(Integer id){
         //根据部门id删除部门信息
         deptMapper.deleteById(id);
