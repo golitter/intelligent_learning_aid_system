@@ -24,8 +24,8 @@ public interface DeptMapper {
      * 删除部门
      * @param id
      */
-    @Delete("delete from dept where id = #{id}")
-    void deleteById(Integer id);
+//    @Delete("delete from dept where id = #{id}")
+//    void deleteById(Integer id);
 
     /**
      * 新增部门
@@ -47,4 +47,11 @@ public interface DeptMapper {
      */
     @Update("update dept set name = #{name}, update_time = #{updateTime} where id = #{id}")
     void update(Dept dept);
+
+    /**
+     * 根据id删除部门信息
+     * @param id   部门id
+     */
+    @Delete("delete from dept where id = #{id}")
+    void deleteById(Integer id);
 }

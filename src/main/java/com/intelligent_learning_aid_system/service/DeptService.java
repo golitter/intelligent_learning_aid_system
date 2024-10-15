@@ -37,4 +37,7 @@ public interface DeptService {
      * @param dept
      */
     void update(Dept dept);
+
+    //根据部门id，删除部门信息及部门下的所有员工
+    public void delete(Integer id);
 }
